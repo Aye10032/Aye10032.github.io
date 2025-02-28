@@ -266,6 +266,16 @@ sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ```
 
+#### 将docker数据路径映射到数据盘
+
+```bash
+sudo docker info | grep "Docker Root Dir"
+sudo systemctl stop docker
+sudo systemctl stop docker.socket
+sudo mv /var/lib/docker /mnt/data01/docker
+sudo ln -sf /mnt/data01/docker /var/lib/docker
+```
+
 
 
 ### mysql
