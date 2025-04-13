@@ -457,7 +457,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -529,7 +529,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -892,7 +892,7 @@ discuss:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 60
   banner_mask_alpha: 0.5
 
@@ -903,7 +903,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 60
   banner_mask_alpha: 0.5
 
@@ -932,7 +932,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 80
   banner_mask_alpha: 0.5
   tagcloud:
@@ -974,7 +974,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 60
   banner_mask_alpha: 0.5
 
@@ -985,7 +985,7 @@ page:
 #---------------------------
 page404:
   enable: true
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 85
   banner_mask_alpha: 0.3
   subtitle: "Page not found"
@@ -1000,7 +1000,7 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: /images/background-cover.jpg
+  banner_img: /images/background-cover.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
   # 友链的成员项
