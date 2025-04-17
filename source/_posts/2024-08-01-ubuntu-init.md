@@ -304,6 +304,25 @@ sudo mysql_secure_installation
 
 
 
+### rstudio server
+
+安装服务
+
+```bash
+sudo apt-get install r-base
+sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.12.1-563-amd64.deb
+sudo gdebi rstudio-server-2024.12.1-563-amd64.deb
+```
+
+安装devtool依赖
+
+```bash
+sudo apt install libcurl4-openssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+```
+
+
+
 ## 其它
 
 ### 切换图形界面和GUI
