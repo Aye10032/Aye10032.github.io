@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Manim常见问题解决方案</title>
+    <link href="/2025/06/03/2025-06-03-manim/"/>
+    <url>/2025/06/03/2025-06-03-manim/</url>
+    
+    <content type="html"><![CDATA[<h1 id="manimce">ManimCE</h1><h2 id="中文渲染以及自定义字体">中文渲染以及自定义字体</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> manim <span class="hljs-keyword">import</span> Scene, Tex, TexTemplateLibrary, DOWN, UP<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">TestText</span>(<span class="hljs-title class_ inherited__">Scene</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">construct</span>(<span class="hljs-params">self</span>):<br>        tex_template = TexTemplateLibrary.ctex<br>        tex_template.add_to_preamble(<span class="hljs-string">r&quot;&quot;&quot;</span><br><span class="hljs-string">        \setCJKmainfont&#123;Noto Sans SC&#125;[BoldFont=&#123;Noto Sans SC&#125;, AutoFakeSlant]</span><br><span class="hljs-string">        \setCJKsansfont&#123;Noto Sans SC&#125;[BoldFont=&#123;Noto Sans SC&#125;]</span><br><span class="hljs-string">        &quot;&quot;&quot;</span>)<br><br>        text1 = Tex(<span class="hljs-string">r&#x27;要使得 $\overline&#123;\varepsilon^2&#125;$ 最小，则对b的选择应满足：&#x27;</span>, tex_template=tex_template)<br>        text2 = Tex(<br>            <span class="hljs-string">r&quot;&quot;&quot;</span><br><span class="hljs-string">            \frac&#123;\partial&#125;&#123;\partial b&#125;[E(a_j-b)^2] &amp;= \frac&#123;\partial&#125;&#123;\partial b&#125;[E(a_j^2-2a_jb+b^2)] \nonumber</span><br><span class="hljs-string">            \\</span><br><span class="hljs-string">            &amp;= -2[E(a_j)-b] \nonumber</span><br><span class="hljs-string">            \\</span><br><span class="hljs-string">            &amp;=0 \nonumber&quot;&quot;&quot;</span>,<br>            tex_environment=<span class="hljs-string">&#x27;align&#x27;</span>,<br>            tex_template=tex_template,<br>        )<br>        <span class="hljs-variable language_">self</span>.add(text1.move_to(UP * <span class="hljs-number">3</span>))<br>        <span class="hljs-variable language_">self</span>.add(text2.next_to(text1, DOWN * <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure><p>实际上就是<code>ctex</code>中自定义字体的方式，修改前后效果如下图所示：</p><p><img src="/images/posts/manim/TestText_ManimCE_v0.19.0_01.png" /></p><p><img src="/images/posts/manim/TestText_ManimCE_v0.19.0_02.png" /></p><p>字体名称可以通过以下指令获得：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">fc-list :lang=zh<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>教程</category>
+      
+      <category>计算机</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>教程</tag>
+      
+      <tag>计算机</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LSI-9361阵列卡扩容操作</title>
     <link href="/2025/05/22/2025-05-22-lsi-raid/"/>
     <url>/2025/05/22/2025-05-22-lsi-raid/</url>
