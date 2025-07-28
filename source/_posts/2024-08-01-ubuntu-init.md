@@ -3,7 +3,7 @@
 layout: post	
 title: "一些Linux服务器的初始设置"	
 date: 2024-08-01 10:21:37	
-updated: 2024-08-15 01:25:28	
+updated: 2025-0-29 01:25:28	
 excerpt: "自用笔记，基于Ubuntu22.04"	
 categories: 
 - 教程
@@ -201,6 +201,16 @@ sudo apt-get autoremove --purge -V
 之后重新安装即可
 
 
+#### 开启N卡持久化
+
+```bash
+cd /usr/share/doc/NVIDIA_GLX-1.0/samples
+sudo tar -xvf nvidia-persistenced-init.tar.bz2
+cd nvidia-persistenced-init
+sudo ./install.sh
+```
+
+
 
 ### docker
 
@@ -274,6 +284,46 @@ sudo systemctl stop docker
 sudo systemctl stop docker.socket
 sudo mv /var/lib/docker /mnt/data01/docker
 sudo ln -sf /mnt/data01/docker /var/lib/docker
+```
+
+
+
+### podman
+
+> 在旧版本ubuntu上安装podman 5.X版本
+
+编辑`/etc/apt/sources.list.d/ubuntu.sources`文件，添加`plucky`：
+
+```
+Types: deb
+URIs: http://archive.ubuntu.com/ubuntu
+Suites: noble noble-updates noble-backports plucky
+Components: main universe restricted multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+## Ubuntu security updates. Aside from URIs and Suites,
+## this should mirror your choices in the previous section.
+Types: deb
+URIS: http://security.ubuntu.com/ubuntu
+Suites: noble-security
+Components: main universe restricted multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+```
+
+然后编辑podman仓库依赖`/etc/apt/preferences.d/podman.pref`：
+
+```
+Package: podman buildah golang-github-containers-common crun libgpgme11t64 libgpg-error0 golang-github-containers-image catatonit conmon containers-storage
+Pin: release n=plucky
+Pin-Priority: 991
+
+Package: libsubid4 netavark passt aardvark-dns containernetworking-plugins libslirp0 slirp4netns
+Pin: release n=plucky
+Pin-Priority: 991
+
+Package: *
+Pin: release n=plucky
+Pin-Priority: 400
 ```
 
 
@@ -372,13 +422,35 @@ export PATH=/usr/local/texlive/2024/bin/x86_64-linux
 
 
 
-### 开启N卡持久化
+### 挂载新硬盘
+
+首先使用`lsblk`查看系统的所有块设备。假设新加的盘为`/dev/sdb`
 
 ```bash
-cd /usr/share/doc/NVIDIA_GLX-1.0/samples
-sudo tar -xvf nvidia-persistenced-init.tar.bz2
-cd nvidia-persistenced-init
-sudo ./install.sh
+# 1. 设置分区
+sudo parted /dev/sdb
+# (parted) mklabel gpt
+# (parted) mkpart primary ext4 0% 100%
+# (parted) print
+# (parted) quit
+
+# 2. 确认新分区设备名 (例如 /dev/sdb1)
+lsblk
+
+# 3. 格式化新分区为 ext4
+sudo mkfs.ext4 /dev/sdb1
+
+# 4. 创建挂载点
+sudo mkdir -p /data
+
+# 5. 获取分区 UUID
+sudo blkid /dev/sda1
+
+# 6. 编辑 /etc/fstab 文件并添加一行
+# UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   /data   ext4   defaults   0   2
+
+# 7. 测试 fstab 配置
+sudo mount -a
 ```
 
 
