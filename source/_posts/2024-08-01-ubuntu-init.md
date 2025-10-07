@@ -3,7 +3,7 @@
 layout: post	
 title: "一些Linux服务器的初始设置"	
 date: 2024-08-01 10:21:37	
-updated: 2025-0-29 01:25:28	
+updated: 2025-07-29 01:25:28	
 excerpt: "自用笔记，基于Ubuntu22.04"	
 categories: 
 - 教程
