@@ -1007,32 +1007,6 @@ links:
   # Member item of page
   items:
     - {
-      title: "ccp101",
-      intro: "老二次元",
-      link: "https://ccp101.com/",
-      avatar: "https://ccp101.com/img/avatar.jpg"
-    }
-    - {
-      title: "doublezhuang",
-      intro: "gal大师",
-      link: "https://www.doublezhuang.com/",
-      avatar: "/images/zhuang.jpg"
-    }
-    - {
-      title: "Kiko",
-      intro: "老二次元2号",
-      link: "https://kiko612.com/",
-      avatar: "/images/kiko.jpg"
-    }
-
-    - {
-      title: "Lab107",
-      intro: "实验室官网",
-      link: "https://www.nuaajc-lab107.com",
-      avatar: "/images/lab_logo.png"
-    }
-
-    - {
       title: "TopologyCraft",
       intro: "拓扑服官网",
       link: "https://www.topo.site/",
